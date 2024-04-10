@@ -15,8 +15,11 @@ to a larger database, for example: MySQL, Postgres...
 import sqlite3
 from prettytable import PrettyTable
 
-
-def create_table():
+""" 
+    Manipulating Agenda table
+        * (these could become a class aftwards)
+"""
+def create_table_agenda():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
 
@@ -29,15 +32,13 @@ def create_table():
         agenda (
             id INTEGER PRIMARY KEY,
             first_name TEXT,
-            last_name TEXT,
-            email TEXT,
-            phone TEXT)
+            last_name TEXT)
     """)
     con.commit()
     con.close()
 
 
-def display_table():
+def display_table_agenda():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
 
@@ -56,7 +57,7 @@ def display_table():
     con.close()
 
 
-def insert_data(first_name, last_name, email, phone):
+def insert_data_agenda(first_name, last_name, email, phone):
     id = None # SQLite automatically implements autoincrement logic.
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -71,7 +72,7 @@ def insert_data(first_name, last_name, email, phone):
     print("---------------------------------------------")
 
 
-def update_data(id, first_name, last_name, email, phone):
+def update_data_agenda(id, first_name, last_name, email, phone):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     cur.execute(f"""
@@ -89,7 +90,7 @@ def update_data(id, first_name, last_name, email, phone):
     print("---------------------------------------------")
 
 
-def delete_data(id):
+def delete_data_agenda(id):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     cur.execute(f"""
@@ -102,7 +103,7 @@ def delete_data(id):
     print("Data have successfully deleted........")
     print("---------------------------------------------")
 
-def data_list():
+def data_list_agenda():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
 

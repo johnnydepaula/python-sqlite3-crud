@@ -17,7 +17,7 @@ def display_options():
 
         # 1 = display all data in Table Format
         if opt == "1":
-            crud.display_table()
+            crud.display_table_agenda()
 
         # 2 = insert data into database.agenda table
         elif opt == "2":
@@ -25,32 +25,32 @@ def display_options():
             last_name = input("Last Name : ")
             email = input("Email : ")
             phone = input("Phone Number : ")
-            crud.insert_data(first_name, last_name, email, phone)
-            crud.display_table()
+            crud.insert_data_agenda(first_name, last_name, email, phone)
+            crud.display_table_agenda()
 
         elif opt == "3":
-            crud.display_table()
+            crud.display_table_agenda()
             id = int(input("Register ID : "))
-            data_list = crud.data_list()
+            data_list = crud.data_list_agenda()
 
             if id in data_list:
                 first_name = input("First Name : ")
                 last_name = input("Last Name : ")
                 email = input("Email : ")
                 phone = input("Phone Number : ")
-                crud.update_data(id, first_name, last_name, email, phone)
-                crud.display_table()
+                crud.update_data_agenda(id, first_name, last_name, email, phone)
+                crud.display_table_agenda()
             else:
                 print("Invalid or Non-existent ID")
 
         elif opt == "4":
-            crud.display_table()
+            crud.display_table_agenda()
             id = int(input("Register ID : "))
-            data_list = crud.data_list()
+            data_list = crud.data_list_agenda()
 
             if id in data_list:
-                crud.delete_data(id)
-                crud.display_table()
+                crud.delete_data_agenda(id)
+                crud.display_table_agenda()
             else:
                 print("Invalid or Non-existent ID")
 
@@ -61,4 +61,3 @@ def display_options():
         else:
             print("Invalid option")
 
-# print(type(display_options()))
