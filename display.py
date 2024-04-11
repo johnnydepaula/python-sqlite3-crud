@@ -1,4 +1,7 @@
 import crud
+from phone import Phone
+
+
 def display_options():
     loop = True
 
@@ -17,13 +20,19 @@ def display_options():
         print("7. Update Email")
         print("8. Delete From Email")
 
-        print("9. Exit")
+        print("9. Display Phone")
+        print("10. Insert Into Phone")
+        print("11. Update Phone")
+        print("12. Delete From Phone")
+
+        print("0. Exit")
 
         print("---------------------------------------------")
         opt = input("Number : ")
         print("---------------------------------------------")
 
-        # 1 = display all data in Table Format
+        ## Manipulating Agenda Table ##
+        # 1 = display all data from Agenda in Table Format
         if opt == "1":
             crud.display_table_agenda()
 
@@ -62,6 +71,7 @@ def display_options():
             else:
                 print("Invalid or Non-existent ID")
 
+        ## Manipulating Email Table ##
         elif opt == "5":
             crud.display_table_email()
 
@@ -99,7 +109,40 @@ def display_options():
             else:
                 print("Invalid or Non-existent Email ID")
 
+        ## Manipulating Phone Table ##
         elif opt == "9":
+            Phone().display_table_phone()
+
+        elif opt == '10':
+            phone_number = input("Phone number : ")
+            id = input("Register (Person) ID : ")
+            Phone().insert_data_phone(phone_number, id)
+            Phone().display_table_phone()
+
+        elif opt == '11':
+            Phone().display_table_phone()
+            id_phone = int(input("Register (Phone) ID : "))
+            data_list = Phone().data_list_phone()
+            if id_phone in data_list:
+                phone_number = input("New Phone number : ")
+                Phone().update_data_phone(id_phone, phone_number)
+                Phone().display_table_phone()
+            else:
+                print("Invalid or Non-existent Phone ID")
+
+        elif opt == '12':
+            Phone().display_table_phone()
+            id_phone = int(input("Register (Phone) ID : "))
+            data_list = Phone().data_list_phone()
+            if id_phone in data_list:
+                Phone().delete_data_phone(id_phone)
+                Phone().display_table_phone()
+            else:
+                print("Invalid or Non-existent Phone ID")
+
+
+
+        elif opt == "0":
             print("See ya!!")
             return False
 
